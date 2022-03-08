@@ -1,6 +1,7 @@
 #include <iostream>
 
 int main() {
+ 
     int num1, num2, num3, num4, num5, num6, sum;
 
     std::cout << "Enter your 6 grades: ";
@@ -8,5 +9,7 @@ int main() {
 
     sum = num1 + num2 + num3 + num4 + num5 + num6;
 
-    std::cout << "Your final grade is: " << sum / 6 << std::endl;
+    std::cout.precision(2);
+    std::cout << "Your final grade is: " << sum / 6 << std::endl; 
+
 }

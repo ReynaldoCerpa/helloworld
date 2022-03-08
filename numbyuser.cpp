@@ -1,12 +1,11 @@
 #include <iostream>
-using namespace std;
 
 int main() {
     int number;
 
-    cout << "Enter an integer: ";
-    cin >> number;
+    std::cout << "Enter an integer: ";
+    std::cin >> number;
 
-    cout << "You entered " << number;
+    std::cout << "You entered " << number;
     return 0;
 }

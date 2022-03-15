@@ -1,11 +1,19 @@
 #include <iostream>
 #include <string.h>
+#include <stdlib.h>
+
 void cipher();
 void decipher();
 
 /*
     To run this program use a compiler like g++ 
     example (linux): g++ mycipher.cpp -o mycipher
+
+
+    App limitations:
+        -NO BLANK SPACES
+        -No numbers
+        -No keys > 25
 */
 
 int main() {
@@ -16,12 +24,14 @@ int main() {
 
     while (option != "3")
     {
-        std::cout << " -- Select and option -- " << std::endl;
-        std::cout << "1) Cipher" << std::endl;
-        std::cout << "2) Decipher" << std::endl;
-        std::cout << "3) Exit\n" << std::endl;
-
+        std::cout << "\n -- Select an option -- " << std::endl;
+        std::cout << "[1] Cipher" << std::endl;
+        std::cout << "[2] Decipher" << std::endl;
+        std::cout << "[3] Exit\n" << std::endl;
+        std::cout << "==> ";
         std::cin >> option;
+        std::cout << "\n";
+
         if (option == "1") {
             cipher();
         } else if (option == "2") {
@@ -43,8 +53,12 @@ void cipher() {
 
     for (i = 0; i < strlen(msg); i++) {
     
-       msg[i] = int(msg[i]) + key;
-
+        if ((int(msg[i]) - key) < 97) {
+            msg[i] = int('z') - abs(((int(msg[i]) - 97) - key)) + 1;
+        }
+        else {
+            msg[i] = int(msg[i]) - key;
+        }
     }
     
     std::cout << "\nEncrypted message: " << msg << "\n" <<std::endl;
@@ -61,9 +75,14 @@ void decipher() {
 
     for (i = 0; i < strlen(msg); i++) {
     
-       msg[i] = int(msg[i]) - key;
+        if ((int(msg[i]) + key) > 122) {
+            msg[i] = int('a') + ((int(msg[i]) - 122) + key) - 1;
+        }
+        else {
+            msg[i] = int(msg[i]) + key;
+        }
 
     }
     
-    std::cout << "\nEncrypted message: " << msg << "\n" <<std::endl;
+    std::cout << "\nDecrypted message: " << msg << "\n" <<std::endl;
 }

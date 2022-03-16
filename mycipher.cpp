@@ -7,7 +7,7 @@ void decipher();
 
 /*
     To run this program use a compiler like g++ 
-    example (linux): g++ mycipher.cpp -o mycipher
+    example (linux): g++ cipher.cpp -o cipher
 
 
     App limitations:
@@ -52,7 +52,6 @@ void cipher() {
     std::cin >> key;
 
     for (i = 0; i < strlen(msg); i++) {
-    
         if ((int(msg[i]) - key) < 97) {
             msg[i] = int('z') - abs(((int(msg[i]) - 97) - key)) + 1;
         }
@@ -61,7 +60,9 @@ void cipher() {
         }
     }
     
-    std::cout << "\nEncrypted message: " << msg << "\n" <<std::endl;
+    std::cout << "\n--------------------------------------";
+    std::cout << "\n    Encrypted message: " << msg <<std::endl;
+    std::cout << "--------------------------------------\n";
 }
 
 void decipher() {
@@ -74,7 +75,6 @@ void decipher() {
     std::cin >> key;
 
     for (i = 0; i < strlen(msg); i++) {
-    
         if ((int(msg[i]) + key) > 122) {
             msg[i] = int('a') + ((int(msg[i]) - 122) + key) - 1;
         }
@@ -84,5 +84,7 @@ void decipher() {
 
     }
     
-    std::cout << "\nDecrypted message: " << msg << "\n" <<std::endl;
+    std::cout << "\n--------------------------------------";
+    std::cout << "\n    Dencrypted message: " << msg <<std::endl;
+    std::cout << "--------------------------------------\n";
 }
